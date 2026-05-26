@@ -3,9 +3,9 @@
   "project": "awaneko-yuya",
   "sourceOfTruth": {
     "designSheetMarkdown": "docs/design_sheet.md",
-    "designSheetMarkdownStatus": "missing",
-    "designSheetImage": "/Users/makihara/Downloads/あわねこ湯屋.png",
-    "designSheetImageStatus": "inspected"
+    "designSheetMarkdownStatus": "available",
+    "designSheetImage": "assets/reference/awaneko_design_sheet.png",
+    "designSheetImageStatus": "available"
   },
   "notes": [
     "Planning manifest only. Do not create image files until prompts and filenames are reviewed.",

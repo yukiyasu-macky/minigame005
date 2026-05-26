@@ -2,15 +2,15 @@
 
 ## Design Summary
 
-あわねこ湯屋 is a low-stress healing rescue game about finding dirty or lost cats, washing them in a warm onsen, and sending them gently onward. The visual direction is defined by the attached design sheet image: warm watercolor storybook rendering, Japanese soft onsen atmosphere, rounded cute cat silhouettes, cream paper panels, cocoa-brown wood UI, pastel accents, and gentle steam/fog effects.
+あわねこ湯屋 is a low-stress healing rescue game about finding dirty or lost cats, washing them in a warm onsen, and sending them gently onward. The visual direction is defined by `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`: warm watercolor storybook rendering, Japanese soft onsen atmosphere, rounded cute cat silhouettes, cream paper panels, cocoa-brown wood UI, pastel accents, and gentle steam/fog effects.
 
 The mood should feel handmade, quiet, and safe. The UI should support short mobile sessions without pressure, battle language, hard contrast, neon colors, or glossy monetization styling.
 
 ## Source Of Truth Status
 
 - Game Studio plugin/skill: not available in the current Codex plugin/skill list. Tool discovery did not expose a Game Studio tool or skill, so this plan proceeds with planning assumptions only.
-- `docs/design_sheet.md`: requested as a critical source, but the file is not present in the repository at this stage. This limitation should be resolved before implementation.
-- Attached design sheet image: accessible and inspected. It is currently the only available design sheet source and is treated as the visual source of truth until `docs/design_sheet.md` is added.
+- `docs/design_sheet.md`: available in the repository and paired with the reference image.
+- Design sheet image: stored in the repository at `assets/reference/awaneko_design_sheet.png` so future reviewers and PRs can inspect the same visual source.
 
 ## Design Sheet Observations
 
@@ -43,7 +43,7 @@ Planning assumption for future implementation:
 ## Asset Pipeline
 
 1. Review `PLAN.md` and `assets/asset_manifest.json`.
-2. Fill missing design decisions from `docs/design_sheet.md` once that file exists.
+2. Fill missing design decisions by updating `docs/design_sheet.md` and the asset manifest together.
 3. Generate or hand-paint assets using the prompts in `docs/image_prompts.md`.
 4. Export transparent PNGs for sprites, UI icons, effects, furniture, and layered cat parts.
 5. Export full-background PNGs for home, puzzle, and reveal scenes.
@@ -69,7 +69,7 @@ Reveal scenes may add a silhouette/fog layer above the body before the clean cat
 ## Asset Production Workflow
 
 - Create one small approved batch first: one home background, one puzzle background, one round cat body, one fur pattern, one eyes set, one dirt overlay, one steam effect, one panel, one button, and one icon.
-- Compare every batch against the attached design sheet image for palette, softness, outline weight, and cat proportions.
+- Compare every batch against `assets/reference/awaneko_design_sheet.png` for palette, softness, outline weight, and cat proportions.
 - Keep prompts specific about watercolor, warm cream paper, cocoa-brown outlines, pastel accents, rounded shapes, and gentle onsen lighting.
 - Avoid terms that imply neon, metal, hard shadows, realistic rendering, PvP, battle, or high-saturation anime UI.
 - Store source prompts in `docs/image_prompts.md` and generated filenames in the manifest before production begins.
@@ -89,7 +89,7 @@ Example:
 
 1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
 2. Asset exploration: produce first visual test batch only after review.
-3. Asset approval: compare generated assets against the design sheet image.
+3. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 4. Static mock composition: create non-interactive mock screens after core assets are approved.
 5. Runtime setup: add React/Vite only after planning and asset review are complete.
 6. Layered rendering prototype: load manifest-defined sprites and test alignment.
@@ -98,7 +98,7 @@ Example:
 
 ## Risks And Open Questions
 
-- `docs/design_sheet.md` is missing, so text-only design rules may be incomplete.
+- The design sheet should remain the source of truth; future prompt or manifest edits should be checked against both `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 - The final engine choice is unconfirmed because Game Studio is unavailable.
 - Cat parts need strict anchor and canvas-size rules to avoid misalignment.
 - Mobile safe areas, bottom navigation, and LIFF browser chrome need early layout tests.
