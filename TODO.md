@@ -2,7 +2,7 @@
 
 ## Missing Design Decisions
 
-- Add the missing `docs/design_sheet.md` file or confirm that the attached image is the only design sheet source.
+- Keep `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png` in sync whenever the design direction changes.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
 - Define exact palette tokens from the design sheet swatches.
@@ -46,7 +46,7 @@
 ## Future Implementation Tasks
 
 - Review and approve `PLAN.md` and `assets/asset_manifest.json`.
-- Add or restore `docs/design_sheet.md`.
+- Review `docs/design_sheet.md` whenever new reference art or UI examples are added.
 - Produce a first approved asset batch after review.
 - Prototype static screen compositions before runtime logic.
 - Add React/Vite only after the planning gate is approved.
