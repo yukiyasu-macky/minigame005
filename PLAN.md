@@ -1,0 +1,116 @@
+# PLAN: あわねこ湯屋 Asset Planning
+
+## Design Summary
+
+あわねこ湯屋 is a low-stress healing rescue game about finding dirty or lost cats, washing them in a warm onsen, and sending them gently onward. The visual direction is defined by the attached design sheet image: warm watercolor storybook rendering, Japanese soft onsen atmosphere, rounded cute cat silhouettes, cream paper panels, cocoa-brown wood UI, pastel accents, and gentle steam/fog effects.
+
+The mood should feel handmade, quiet, and safe. The UI should support short mobile sessions without pressure, battle language, hard contrast, neon colors, or glossy monetization styling.
+
+## Source Of Truth Status
+
+- Game Studio plugin/skill: not available in the current Codex plugin/skill list. Tool discovery did not expose a Game Studio tool or skill, so this plan proceeds with planning assumptions only.
+- `docs/design_sheet.md`: requested as a critical source, but the file is not present in the repository at this stage. This limitation should be resolved before implementation.
+- Attached design sheet image: accessible and inspected. It is currently the only available design sheet source and is treated as the visual source of truth until `docs/design_sheet.md` is added.
+
+## Design Sheet Observations
+
+- Layout structure: the design sheet is organized as a cream paper board with thin beige dividers, cocoa-brown pill section labels, compact reference panels, and dense but calm spacing.
+- Component hierarchy: title/logo and concept sit at the top, then palette/type/icon/cat style references, followed by mobile screen mocks, reveal flow, room layout, furniture, UI parts, effects, icons, and information flow.
+- Reusable UI patterns: rounded brown headers, cream panels, soft tan buttons, small icon tabs, coin/gem counters, compact status meters, bottom navigation icons, and bordered mobile frames.
+- Color palette: dark cocoa brown, medium warm brown, soft cream, pale yellow, mint, muted sky blue, light periwinkle, blush pink, and white.
+- Typography mood: rounded, friendly Japanese display lettering for the logo and approachable rounded sans text for UI labels. Text should feel warm and legible, not futuristic or sharp.
+- Cat proportions: large heads, short rounded bodies, small paws, soft cheek shapes, rounded ears, simple tails, and expressive but gentle eyes.
+- Rendering softness: watercolor wash, pencil-like brown outlines, low contrast, feathered shadows, warm light, and paper texture.
+- Icon style: simple rounded line icons with brown outlines and occasional pastel fills.
+- Panel framing: soft cream panels with thin brown/tan borders; section labels use dark rounded wood-tab shapes.
+- Effect style: translucent bubbles, pale steam, small sparkles, hearts, tears, moon glow, and subtle light rings.
+- Environment art: cozy wooden bathhouse interiors, tatami/wood textures, plants, lanterns, noren, small onsen tubs, mountain forest exteriors, and misty night baths.
+- Spacing density: compact reference-sheet density, but actual game screens should keep clear touch targets and readable labels.
+- Interaction tone: tap to discover, wash, reveal, inspect details, and send off. Interactions should feel gentle and ceremonial rather than competitive.
+- Sprite layering hints: separate cat bodies, fur colors, patterns, eyes, ears, tails, accessories, dirt, steam, bubbles, sparkles, and reveal silhouettes.
+
+## Engine And Rendering Decision
+
+No runtime implementation should begin until `PLAN.md` and `assets/asset_manifest.json` are reviewed.
+
+Planning assumption for future implementation:
+
+- App shell: React/Vite is a likely future fit for LIFF compatibility and mobile UI, but it must not be added yet.
+- Rendering: layered 2D sprite rendering should be planned for a canvas-capable renderer or DOM/canvas hybrid. A future asset loader can map manifest ids to image paths and stack layers by category.
+- Game logic: deferred. No gameplay, LIFF, storage, or runtime code is part of this planning stage.
+- Persistence: future state should keep localStorage first and allow migration to Firebase without changing asset ids or save data keys.
+
+## Asset Pipeline
+
+1. Review `PLAN.md` and `assets/asset_manifest.json`.
+2. Fill missing design decisions from `docs/design_sheet.md` once that file exists.
+3. Generate or hand-paint assets using the prompts in `docs/image_prompts.md`.
+4. Export transparent PNGs for sprites, UI icons, effects, furniture, and layered cat parts.
+5. Export full-background PNGs for home, puzzle, and reveal scenes.
+6. Keep all future assets under `assets/images/`.
+7. Update `assets/asset_manifest.json` status from `planned` to `generated`, `approved`, or `needs_revision`.
+
+## Sprite Layering Approach
+
+Future cat rendering should use a stable center-bottom anchor and predictable layer order:
+
+1. shadow or floor contact
+2. body
+3. tail
+4. pattern
+5. dirt
+6. eyes
+7. mouth
+8. accessory
+9. foreground effect
+
+Reveal scenes may add a silhouette/fog layer above the body before the clean cat is shown. Dirt and bubbles should be independent overlays so washing and reveal effects can be animated later without changing the base cat art.
+
+## Asset Production Workflow
+
+- Create one small approved batch first: one home background, one puzzle background, one round cat body, one fur pattern, one eyes set, one dirt overlay, one steam effect, one panel, one button, and one icon.
+- Compare every batch against the attached design sheet image for palette, softness, outline weight, and cat proportions.
+- Keep prompts specific about watercolor, warm cream paper, cocoa-brown outlines, pastel accents, rounded shapes, and gentle onsen lighting.
+- Avoid terms that imply neon, metal, hard shadows, realistic rendering, PvP, battle, or high-saturation anime UI.
+- Store source prompts in `docs/image_prompts.md` and generated filenames in the manifest before production begins.
+
+## Naming Conventions
+
+- Use lowercase snake_case filenames.
+- Use category folders that match the manifest category.
+- Keep ids stable after first review.
+- Prefer descriptive names over numeric-only names.
+
+Example:
+
+`assets/images/cat/body/cat_body_round_cream.png`
+
+## Implementation Phases
+
+1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
+2. Asset exploration: produce first visual test batch only after review.
+3. Asset approval: compare generated assets against the design sheet image.
+4. Static mock composition: create non-interactive mock screens after core assets are approved.
+5. Runtime setup: add React/Vite only after planning and asset review are complete.
+6. Layered rendering prototype: load manifest-defined sprites and test alignment.
+7. Gameplay prototype: implement the rescue, washing, reveal, detail, and send-off flow.
+8. LIFF/storage phase: add platform assumptions and persistence migration path.
+
+## Risks And Open Questions
+
+- `docs/design_sheet.md` is missing, so text-only design rules may be incomplete.
+- The final engine choice is unconfirmed because Game Studio is unavailable.
+- Cat parts need strict anchor and canvas-size rules to avoid misalignment.
+- Mobile safe areas, bottom navigation, and LIFF browser chrome need early layout tests.
+- Watercolor softness can become inconsistent if generated assets are produced in separate batches without strong prompt discipline.
+- Backgrounds and UI panels must stay readable under steam/fog effects.
+- Future storage schema should not bake in temporary asset filenames.
+
+## Planning-Stage Limitations
+
+- No dependencies were installed.
+- No React/Vite files were added.
+- No `src/` directory was created.
+- No gameplay, LIFF, localStorage, Firebase, or runtime/game logic was implemented.
+- No actual image files were created.
+- No asset loader was created. A future loader may read `assets/asset_manifest.json`, group entries by category, and compose cat sprites by stable ids.
