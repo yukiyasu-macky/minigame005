@@ -52,6 +52,8 @@ Planning assumption for future implementation:
 
 ## Sprite Layering Approach
 
+`docs/sprite_spec.md` is the future production standard for layered cat sprite canvas size, coordinates, anchors, layer order, export rules, file naming, prompt guidance, and validation.
+
 Future cat rendering should use a stable center-bottom anchor and predictable layer order:
 
 1. shadow or floor contact
