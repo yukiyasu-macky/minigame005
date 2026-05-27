@@ -10,7 +10,10 @@
 
 ## Missing Asset Decisions
 
+- Review `docs/sprite_spec.md`.
 - Define exact sprite canvas sizes and anchor points for all cat layers.
+- Decide whether accessories should be 512x512 or 768x768.
+- Decide whether color variants are separate PNGs or tintable layers.
 - Decide how many initial cat body, pattern, eye, mouth, tail, dirt, and accessory variants are needed for the first playable prototype.
 - Confirm whether rare/fantasy cats need glow layers as separate effects or baked into body art.
 - Decide whether room furniture uses isometric perspective, front-facing perspective, or mixed storybook perspective.
@@ -47,7 +50,10 @@
 
 - Review and approve `PLAN.md` and `assets/asset_manifest.json`.
 - Review `docs/design_sheet.md` whenever new reference art or UI examples are added.
+- Produce first sprite test batch.
+- Add anchor metadata to `assets/asset_manifest.json` if approved.
 - Produce a first approved asset batch after review.
+- Create static sprite composition test after React/Vite is allowed.
 - Prototype static screen compositions before runtime logic.
 - Add React/Vite only after the planning gate is approved.
 - Create a future manifest-based asset loader after implementation begins.
