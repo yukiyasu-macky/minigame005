@@ -8,7 +8,7 @@ The mood should feel handmade, quiet, and safe. The UI should support short mobi
 
 ## Source Of Truth Status
 
-- Game Studio plugin/skill: not available in the current Codex plugin/skill list. Tool discovery did not expose a Game Studio tool or skill, so this plan proceeds with planning assumptions only.
+- Game Studio plugin/skill: available for this repository. Planning and future implementation should follow Game Studio-style separation between systems/game logic, rendering/components, assets/pipeline, and save/state.
 - `docs/design_sheet.md`: available in the repository and paired with the reference image.
 - Design sheet image: stored in the repository at `assets/reference/awaneko_design_sheet.png` so future reviewers and PRs can inspect the same visual source.
 
@@ -39,6 +39,30 @@ Planning assumption for future implementation:
 - Rendering: layered 2D sprite rendering should be planned for a canvas-capable renderer or DOM/canvas hybrid. A future asset loader can map manifest ids to image paths and stack layers by category.
 - Game logic: deferred. No gameplay, LIFF, storage, or runtime code is part of this planning stage.
 - Persistence: future state should keep localStorage first and allow migration to Firebase without changing asset ids or save data keys.
+
+## Screen Flow And Gameplay Loop
+
+- `docs/screen_flow.md` is the planning baseline for screen hierarchy, route relationships, and shared overlays.
+- `docs/game_loop.md` is the planning baseline for the Home-centered exploration, puzzle, result, reveal, and reward loop.
+- `HomeScreen` is the main hub.
+- `HomeScreen -> PuzzleScreen -> ResultScreen` is the core play path.
+- `ResultScreen -> RevealScreen` happens only when an exploration result includes a cat.
+- Non-cat results should still feed Home growth, furniture, onsen upgrades, collections, or events.
+- Album and CatDex are related but separate concerns: CatDex tracks cat discovery; Album also covers adopted-cat memories, rewards, progress, and achievements.
+
+## Ad-Safe Layout Constraint
+
+`docs/ui_safe_area_spec.md` is the permanent source of truth for ad-safe layout planning.
+
+All future screens and gameplay systems must assume:
+
+- persistent top header area
+- persistent bottom banner ad area
+- mobile safe areas and notch devices
+- LIFF/browser chrome
+- popup/interstitial ad interruption
+
+Gameplay must pause during popup/interstitial ads. Timers, stamina, rewards, puzzle logic, reveal animations, progression, and input must not continue behind ads.
 
 ## Asset Pipeline
 
@@ -101,9 +125,10 @@ Example:
 ## Risks And Open Questions
 
 - The design sheet should remain the source of truth; future prompt or manifest edits should be checked against both `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
-- The final engine choice is unconfirmed because Game Studio is unavailable.
+- Game Studio planning conventions should stay aligned with the eventual React/Vite implementation.
 - Cat parts need strict anchor and canvas-size rules to avoid misalignment.
 - Mobile safe areas, bottom navigation, and LIFF browser chrome need early layout tests.
+- Persistent top header, bottom banner ads, and popup/interstitial ad pauses need early layout and state tests.
 - Watercolor softness can become inconsistent if generated assets are produced in separate batches without strong prompt discipline.
 - Backgrounds and UI panels must stay readable under steam/fog effects.
 - Future storage schema should not bake in temporary asset filenames.
