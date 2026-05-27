@@ -6,6 +6,7 @@ This document preserves the current planning baseline for あわねこ湯屋 scr
 
 Confirmed:
 
+- MVP screen priority is defined in `docs/mvp_scope.md`.
 - `HomeScreen` is the main hub.
 - `HomeScreen -> PuzzleScreen` is the core play entry.
 - `PuzzleScreen -> ResultScreen` always happens after an exploration/puzzle run.
@@ -50,6 +51,37 @@ TitleScene
       -> NoticeScreen
       -> SettingsScreen
 ```
+
+## MVP Screen Priority
+
+Tier 1 must function end-to-end:
+
+- `TitleScene`
+- `HomeScreen`
+- `PuzzleScreen`
+- `ResultScreen`
+- `RevealScreen`
+- `CatDetailScreen`
+
+Tier 2 should be minimal but connected:
+
+- `AlbumScreen`
+- `CatDexScreen`
+- `OnsenEditScreen`
+- `InventoryScreen`
+
+Tier 3 may remain lightweight placeholders during MVP:
+
+- `EventScreen`
+- `MissionScreen`
+- `ShopScreen`
+- `MailScreen`
+- `NoticeScreen`
+- `SettingsScreen`
+
+Planning note:
+
+Tier 3 placeholder screens are not the MVP goal. The MVP goal is validating the core gameplay and emotional loop described in `docs/mvp_scope.md`.
 
 ## TitleScene
 
@@ -262,6 +294,8 @@ Confirmed:
 - If no cat is found, return to `HomeScreen` after rewards are accepted.
 - Non-cat rewards must connect back to Home growth, furniture, onsen upgrades, collection progress, or event progress.
 
+Possible rewards include cat discovery, furniture materials, onsen materials, bubble materials, photos, letters, recipes, event materials, koban/currency, and empty or light outcomes.
+
 ## RevealScreen
 
 Purpose:
@@ -330,4 +364,3 @@ Shared overlays:
 Architecture note:
 
 Overlays should be separated from screen routes. `AdOverlay` must be able to disable gameplay input and pause runtime systems without losing the underlying route state.
-

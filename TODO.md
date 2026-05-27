@@ -3,6 +3,7 @@
 ## Missing Design Decisions
 
 - Keep `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png` in sync whenever the design direction changes.
+- Review `docs/mvp_scope.md`.
 - Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
@@ -26,8 +27,20 @@
 - Future React/Vite setup must stay compatible with LIFF browser constraints.
 - Asset ids should remain stable if localStorage data later migrates to Firebase.
 - Future state needs `isAdShowing`, `reservedAdHeight`, and `safeAreaInsets` without coupling gameplay systems to UI components.
+- MVP implementation can drift if puzzle, reward, rendering, save data, and ad state are not kept separated.
 - Generated PNG dimensions may become too large for mobile if watercolor backgrounds are exported without compression planning.
 - A future manifest loader needs validation so missing assets fail clearly.
+
+## MVP Stabilization Tasks
+
+- Review and approve `docs/mvp_scope.md`.
+- Define the MVP result reward table.
+- Define the minimum SaveData structure for localStorage first and Firebase migration later.
+- Define the minimum CatGenerator structure for seed-based generated cats.
+- Define Home growth linkage rules.
+- Map exploration -> reward -> Home progression for cat and non-cat outcomes.
+- Decide the minimum Tier 2 connections for Album/CatDex and OnsenEdit/Inventory.
+- Decide which Tier 3 screens can remain lightweight placeholders during MVP.
 
 ## Sprite Alignment Risks
 
@@ -57,6 +70,7 @@
 - Review `docs/design_sheet.md` whenever new reference art or UI examples are added.
 - Validate screen mockups against `docs/ui_safe_area_spec.md`.
 - Create first screen flow/state diagram from `docs/screen_flow.md` and `docs/game_loop.md`.
+- Do not start React/Vite or gameplay runtime until MVP stabilization tasks are reviewed.
 - Produce first sprite test batch.
 - Add anchor metadata to `assets/asset_manifest.json` if approved.
 - Produce a first approved asset batch after review.
