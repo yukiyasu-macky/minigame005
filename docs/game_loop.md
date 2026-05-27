@@ -7,6 +7,7 @@ This document preserves the current planning baseline for あわねこ湯屋 pro
 Confirmed:
 
 - MVP scope is defined in `docs/mvp_scope.md`.
+- Puzzle feel and rules are defined in `docs/puzzle_design.md`.
 - MVP reward/stamina/adoption/result presentation rules are defined in `docs/reward_table.md`.
 - SaveData planning is defined in `docs/data_schema.md`.
 - The game is Home-centered.
@@ -17,8 +18,8 @@ Confirmed:
 
 Tentative:
 
-- exact puzzle rules
-- scoring formula
+- exact puzzle tuning
+- cleaning/result calculation formula
 - reward quantities after tuning
 - cat discovery rates
 - bubble-related boost/support behavior
@@ -69,10 +70,14 @@ Inputs expected to evolve:
 
 Confirmed constraints:
 
+- Puzzle gameplay is cleaning a hot spring, not battle, score attack, or arcade action.
 - gameplay must stay low-stress
 - no PvP/battle framing
+- no generic neon/candy/jewel bubble shooter presentation
 - no progress loss due to popup/interstitial ads
 - ad interruption must pause puzzle systems
+
+`PuzzleScreen` uses bubble-shooter inspiration only as a mechanical base. The emotional presentation is onsen cleaning: dirt flows away, steam drifts, rocks feel like scenery, and ZABAA refreshes bath water.
 
 ## Puzzle Resolution
 
@@ -80,7 +85,7 @@ Confirmed constraints:
 
 Result data may include:
 
-- score
+- cleaning progress
 - wash rate
 - bubble-related reward
 - onsen materials
@@ -94,6 +99,8 @@ Result data may include:
 Planning note:
 
 Puzzle output should be structured data that systems can consume, not direct UI side effects. Future implementation should keep gameplay systems, result calculation, rendering, and save/state separate.
+
+Puzzle completion should transition through ZABAA, dirt washing away, rising steam, silence, and then `ResultScreen`.
 
 ## Result Outcomes
 
@@ -143,6 +150,7 @@ The reveal should feel gentle and caring:
 - pale steam
 - silhouette emergence
 - warm sparkles
+- soft bell cue when Tier 3 cat is confirmed
 - no aggressive effects
 - no battle victory language
 

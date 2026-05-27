@@ -45,6 +45,7 @@ Planning assumption for future implementation:
 - `docs/mvp_scope.md` is the planning baseline for MVP boundaries, screen priority, vertical-slice requirements, and pre-implementation stabilization gates.
 - `docs/screen_flow.md` is the planning baseline for screen hierarchy, route relationships, and shared overlays.
 - `docs/game_loop.md` is the planning baseline for the Home-centered exploration, puzzle, result, reveal, and reward loop.
+- `docs/puzzle_design.md` is the final direction for Puzzle gameplay feel, onsen-cleaning presentation, ZABAA, dirt/rock rules, and non-arcade UI/audio/animation tone.
 - `docs/reward_table.md` is the planning baseline for MVP reward tiers, stamina, adoption circulation, Result presentation, and config-driven tuning values.
 - `docs/data_schema.md` is the planning baseline for minimum SaveData structure, operation-confirmed patches, and future localStorage/Firebase compatibility.
 - `HomeScreen` is the main hub.
@@ -140,6 +141,7 @@ Example:
 - Backgrounds and UI panels must stay readable under steam/fog effects.
 - Future storage schema should not bake in temporary asset filenames.
 - Reward, stamina, adoption, and result presentation values must remain config-driven rather than hardcoded.
+- Puzzle implementation must preserve the onsen-cleaning mood and must not drift into generic arcade bubble shooter presentation.
 
 ## Planning-Stage Limitations
 

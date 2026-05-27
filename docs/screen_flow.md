@@ -256,16 +256,23 @@ Purpose:
 
 Purpose:
 
-- washing play
+- hot spring cleaning play
 - bubble use
 - dirt removal
-- combo
+- cleaning mission progress
+- ZABAA refresh
 - pause
 - ad pause
 - retire confirmation
 
 Confirmed:
 
+- Puzzle direction is defined in `docs/puzzle_design.md`.
+- Puzzle is onsen cleaning, not battle, score attack, or arcade action.
+- The board should feel like a hot spring surface, not a visible mechanical grid.
+- Steam should always exist.
+- Rocks are fixed scenery obstacles that split flow and create pockets.
+- ZABAA is always visible, usable up to 3 times per puzzle, removes all dirt except rocks, generates a new board, and includes steam animation.
 - Popup/interstitial ads pause puzzle gameplay.
 - Timers, combo logic, stamina, rewards, reveal animation, progression, and input must not continue behind ads.
 
@@ -273,7 +280,7 @@ Confirmed:
 
 Purpose:
 
-- score display
+- cleaning result display
 - wash rate
 - bubble-related reward
 - onsen material gained
