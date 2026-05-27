@@ -7,6 +7,8 @@ This document preserves the current planning baseline for あわねこ湯屋 pro
 Confirmed:
 
 - MVP scope is defined in `docs/mvp_scope.md`.
+- MVP reward/stamina/adoption/result presentation rules are defined in `docs/reward_table.md`.
+- SaveData planning is defined in `docs/data_schema.md`.
 - The game is Home-centered.
 - Exploration enters from Home and resolves through Puzzle and Result.
 - Cat reveal is conditional, not guaranteed.
@@ -17,10 +19,10 @@ Tentative:
 
 - exact puzzle rules
 - scoring formula
-- reward quantities
+- reward quantities after tuning
 - cat discovery rates
-- stamina/bubble economy
-- adoption requirements
+- bubble-related boost/support behavior
+- exact adoption durations and grace periods
 
 ## Core Loop
 
@@ -80,18 +82,14 @@ Result data may include:
 
 - score
 - wash rate
-- koban
-- bubble materials
+- bubble-related reward
 - onsen materials
 - furniture materials
-- photos
-- letters
 - recipes
 - event materials
 - cat discovery flag
 - rare presentation flag
 - Home growth preview changes
-- empty or light outcome flag
 
 Planning note:
 
@@ -112,11 +110,17 @@ Non-cat reward examples:
 - materials for onsen expansion
 - furniture upgrade resources
 - recipes for future unlocks
-- photos for Album progress
-- letters for Mail/Album memory records
 - event materials for EventScreen progression
-- koban/currency for future purchases or upgrades
-- empty/light outcomes that still nudge progress or reinforce replay motivation
+- bubble-related support materials for puzzle operation
+
+Excluded from normal MVP ResultScreen exploration loot:
+
+- photos
+- letters
+- generic koban/currency
+- total nothing outcomes
+
+Photos and letters belong to adoption/send-off memory systems. Koban/currency can be reconsidered later only if a clear use case appears.
 
 ## Cat Reveal Condition
 
@@ -160,6 +164,21 @@ It may show:
 
 After review or care actions, the flow returns to `HomeScreen`.
 
+## Adoption Circulation
+
+Cats stay in Home after being found. After a hidden stay duration, a cat may receive an adoption request. The player can manually send off cats.
+
+If an adoption request remains unattended for a configured grace period, the cat may be automatically sent off. This must be framed positively as a new family being found, not as deletion or loss.
+
+After send-off:
+
+- create adoption record
+- add photo/memory to Album
+- optionally add letter later
+- free a Home cat slot
+
+Rare cats may use longer stay duration or special rules later.
+
 ## Home Growth Connections
 
 Rewards should connect to one or more Home systems:
@@ -194,6 +213,8 @@ Confirmed:
 Planning note:
 
 Save data should keep stable ids for cats, memories, photos, letters, and rewards so localStorage data can migrate to Firebase later.
+
+Photos and letters are created through adoption/send-off memory flow, not as normal exploration loot.
 
 ## Ad-Safe Runtime Assumptions
 
@@ -240,3 +261,5 @@ Keep future implementation separated:
 - save/state: seeds, ids, inventory, cat records, rewards, UI/ad state
 
 The cat generator should reference stable asset ids and seed values, not raw file paths.
+
+Reward, stamina, adoption, result presentation, cat generation, and Home growth should be config-driven.

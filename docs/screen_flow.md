@@ -11,7 +11,7 @@ Confirmed:
 - `HomeScreen -> PuzzleScreen` is the core play entry.
 - `PuzzleScreen -> ResultScreen` always happens after an exploration/puzzle run.
 - `ResultScreen -> RevealScreen` happens only when the result includes a rescued cat.
-- Non-cat results return value through materials, furniture resources, recipes, letters, photos, event items, collection progress, or Home growth.
+- Non-cat results return value through materials, furniture resources, recipes, event items, collection progress, or Home growth.
 - All screens must follow the ad-safe layout constraints in `docs/ui_safe_area_spec.md`.
 
 Tentative:
@@ -215,7 +215,7 @@ Missions should support gentle progression and should not pressure the player du
 
 Purpose:
 
-- bubble power recovery
+- stamina recovery
 - limited furniture
 - seasonal themes
 - skins
@@ -275,12 +275,9 @@ Purpose:
 
 - score display
 - wash rate
-- koban gained
-- bubble material gained
+- bubble-related reward
 - onsen material gained
 - furniture material gained
-- photo discovery
-- letter discovery
 - recipe discovery
 - event material gained
 - rescued-cat discovery check
@@ -294,7 +291,7 @@ Confirmed:
 - If no cat is found, return to `HomeScreen` after rewards are accepted.
 - Non-cat rewards must connect back to Home growth, furniture, onsen upgrades, collection progress, or event progress.
 
-Possible rewards include cat discovery, furniture materials, onsen materials, bubble materials, photos, letters, recipes, event materials, koban/currency, and empty or light outcomes.
+Possible rewards include cat discovery, furniture materials, onsen materials, bubble-related support rewards, recipes, and event materials. Photos and letters belong to Album/memory flow after adoption/send-off, not normal ResultScreen exploration loot. Generic koban/currency is excluded from the MVP reward table for now. There should be no total "nothing" result.
 
 ## RevealScreen
 

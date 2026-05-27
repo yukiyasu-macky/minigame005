@@ -34,11 +34,15 @@
 ## MVP Stabilization Tasks
 
 - Review and approve `docs/mvp_scope.md`.
-- Define the MVP result reward table.
-- Define the minimum SaveData structure for localStorage first and Firebase migration later.
+- Review and approve `docs/reward_table.md`.
+- Review and approve `docs/data_schema.md`.
+- Tune the MVP result reward table after playtesting.
+- Validate the minimum SaveData structure for localStorage first and Firebase migration later.
 - Define the minimum CatGenerator structure for seed-based generated cats.
 - Define Home growth linkage rules.
 - Map exploration -> reward -> Home progression for cat and non-cat outcomes.
+- Decide duplicate recipe material conversion values.
+- Decide adoption stay duration and grace period values.
 - Decide the minimum Tier 2 connections for Album/CatDex and OnsenEdit/Inventory.
 - Decide which Tier 3 screens can remain lightweight placeholders during MVP.
 
@@ -52,7 +56,7 @@
 ## Safe-Area Risks
 
 - Bottom navigation can collide with iOS home indicators inside LIFF.
-- Top currency counters and close buttons can collide with notches or browser chrome.
+- Top resource counters and close buttons can collide with notches or browser chrome.
 - Storybook panel borders may feel cramped on narrow screens if not responsive.
 - Persistent bottom banner ads can hide primary actions if screens assume full height.
 - Popup/interstitial ads can desync timers, rewards, puzzle logic, or reveal animations if pause/resume is not centralized.
@@ -87,6 +91,8 @@
 - How are cats discovered in the puzzle/search screen?
 - What does washing input feel like: tap, drag, bubble matching, or timed cleanse?
 - What exact event or roll determines `catFound` at ResultScreen?
+- What exact materials should duplicate recipes convert into?
+- What stay duration and grace period should adoption use for MVP?
 - Are rare/fantasy cats purely cosmetic, or do they affect progression?
 - What does "send off" mean mechanically and emotionally?
 - How many cats should appear in the bathhouse at once?
