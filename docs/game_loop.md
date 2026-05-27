@@ -6,6 +6,7 @@ This document preserves the current planning baseline for あわねこ湯屋 pro
 
 Confirmed:
 
+- MVP scope is defined in `docs/mvp_scope.md`.
 - The game is Home-centered.
 - Exploration enters from Home and resolves through Puzzle and Result.
 - Cat reveal is conditional, not guaranteed.
@@ -32,6 +33,8 @@ HomeScreen
       -> if no cat found: HomeScreen
   -> spend/use rewards on Home growth, furniture, collections, and events
 ```
+
+The MVP must prove this loop as a playable vertical slice, not as placeholder navigation and not as a complete implementation of every screen.
 
 ## Home-Centered Progression
 
@@ -88,6 +91,7 @@ Result data may include:
 - cat discovery flag
 - rare presentation flag
 - Home growth preview changes
+- empty or light outcome flag
 
 Planning note:
 
@@ -111,6 +115,8 @@ Non-cat reward examples:
 - photos for Album progress
 - letters for Mail/Album memory records
 - event materials for EventScreen progression
+- koban/currency for future purchases or upgrades
+- empty/light outcomes that still nudge progress or reinforce replay motivation
 
 ## Cat Reveal Condition
 
@@ -173,6 +179,10 @@ Expected to evolve:
 - how furniture affects cat appearances
 - how Home previews communicate future upgrades
 
+MVP requirement:
+
+Returning to Home should show visible change or state progression. If no cat is found, the player should still see a resource, collection, event, or growth connection that makes another exploration feel worthwhile.
+
 ## Album And CatDex Relationship
 
 Confirmed:
@@ -230,4 +240,3 @@ Keep future implementation separated:
 - save/state: seeds, ids, inventory, cat records, rewards, UI/ad state
 
 The cat generator should reference stable asset ids and seed values, not raw file paths.
-

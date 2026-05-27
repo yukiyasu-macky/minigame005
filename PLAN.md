@@ -42,6 +42,7 @@ Planning assumption for future implementation:
 
 ## Screen Flow And Gameplay Loop
 
+- `docs/mvp_scope.md` is the planning baseline for MVP boundaries, screen priority, vertical-slice requirements, and pre-implementation stabilization gates.
 - `docs/screen_flow.md` is the planning baseline for screen hierarchy, route relationships, and shared overlays.
 - `docs/game_loop.md` is the planning baseline for the Home-centered exploration, puzzle, result, reveal, and reward loop.
 - `HomeScreen` is the main hub.
@@ -49,6 +50,8 @@ Planning assumption for future implementation:
 - `ResultScreen -> RevealScreen` happens only when an exploration result includes a cat.
 - Non-cat results should still feed Home growth, furniture, onsen upgrades, collections, or events.
 - Album and CatDex are related but separate concerns: CatDex tracks cat discovery; Album also covers adopted-cat memories, rewards, progress, and achievements.
+
+The MVP is not full-screen coverage or placeholder navigation. It is a playable vertical slice that proves the emotional loop from Title to Home, Puzzle, Result, conditional Reveal, CatDetail, and back to Home.
 
 ## Ad-Safe Layout Constraint
 
@@ -114,18 +117,20 @@ Example:
 ## Implementation Phases
 
 1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
-2. Asset exploration: produce first visual test batch only after review.
-3. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
-4. Static mock composition: create non-interactive mock screens after core assets are approved.
-5. Runtime setup: add React/Vite only after planning and asset review are complete.
-6. Layered rendering prototype: load manifest-defined sprites and test alignment.
-7. Gameplay prototype: implement the rescue, washing, reveal, detail, and send-off flow.
-8. LIFF/storage phase: add platform assumptions and persistence migration path.
+2. MVP stabilization: review `docs/mvp_scope.md`, result reward table, SaveData minimum structure, CatGenerator minimum structure, Home growth linkage rules, and exploration -> reward -> Home progression mapping.
+3. Asset exploration: produce first visual test batch only after review.
+4. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
+5. Static mock composition: create non-interactive mock screens after core assets are approved.
+6. Runtime setup: add React/Vite only after planning and MVP stabilization gates are complete.
+7. Layered rendering prototype: load manifest-defined sprites and test alignment.
+8. Gameplay vertical slice: implement only the Tier 1 MVP loop before expanding broad screens.
+9. LIFF/storage phase: add platform assumptions and persistence migration path.
 
 ## Risks And Open Questions
 
 - The design sheet should remain the source of truth; future prompt or manifest edits should be checked against both `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 - Game Studio planning conventions should stay aligned with the eventual React/Vite implementation.
+- Premature full-screen implementation could distract from proving the MVP emotional loop.
 - Cat parts need strict anchor and canvas-size rules to avoid misalignment.
 - Mobile safe areas, bottom navigation, and LIFF browser chrome need early layout tests.
 - Persistent top header, bottom banner ads, and popup/interstitial ad pauses need early layout and state tests.
