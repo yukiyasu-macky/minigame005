@@ -3,10 +3,12 @@
 ## Missing Design Decisions
 
 - Keep `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png` in sync whenever the design direction changes.
+- Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
 - Define exact palette tokens from the design sheet swatches.
 - Decide screen aspect targets for LIFF mobile use.
+- Decide tentative top header height and bottom banner reserved height for first mobile mockups.
 
 ## Missing Asset Decisions
 
@@ -23,6 +25,7 @@
 
 - Future React/Vite setup must stay compatible with LIFF browser constraints.
 - Asset ids should remain stable if localStorage data later migrates to Firebase.
+- Future state needs `isAdShowing`, `reservedAdHeight`, and `safeAreaInsets` without coupling gameplay systems to UI components.
 - Generated PNG dimensions may become too large for mobile if watercolor backgrounds are exported without compression planning.
 - A future manifest loader needs validation so missing assets fail clearly.
 
@@ -38,6 +41,8 @@
 - Bottom navigation can collide with iOS home indicators inside LIFF.
 - Top currency counters and close buttons can collide with notches or browser chrome.
 - Storybook panel borders may feel cramped on narrow screens if not responsive.
+- Persistent bottom banner ads can hide primary actions if screens assume full height.
+- Popup/interstitial ads can desync timers, rewards, puzzle logic, or reveal animations if pause/resume is not centralized.
 
 ## Mobile UI Risks
 
@@ -50,11 +55,14 @@
 
 - Review and approve `PLAN.md` and `assets/asset_manifest.json`.
 - Review `docs/design_sheet.md` whenever new reference art or UI examples are added.
+- Validate screen mockups against `docs/ui_safe_area_spec.md`.
+- Create first screen flow/state diagram from `docs/screen_flow.md` and `docs/game_loop.md`.
 - Produce first sprite test batch.
 - Add anchor metadata to `assets/asset_manifest.json` if approved.
 - Produce a first approved asset batch after review.
 - Create static sprite composition test after React/Vite is allowed.
 - Prototype static screen compositions before runtime logic.
+- Add a future shared layout shell for `SafeArea`, `ReservedAdArea`, and `GameplayArea` after React/Vite is allowed.
 - Add React/Vite only after the planning gate is approved.
 - Create a future manifest-based asset loader after implementation begins.
 - Test layered sprite rendering on mobile viewport sizes.
@@ -64,6 +72,7 @@
 
 - How are cats discovered in the puzzle/search screen?
 - What does washing input feel like: tap, drag, bubble matching, or timed cleanse?
+- What exact event or roll determines `catFound` at ResultScreen?
 - Are rare/fantasy cats purely cosmetic, or do they affect progression?
 - What does "send off" mean mechanically and emotionally?
 - How many cats should appear in the bathhouse at once?
