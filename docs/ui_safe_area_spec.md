@@ -108,7 +108,7 @@ Systems affected:
 - puzzle timer
 - combo logic
 - stamina or bubble consumption
-- score calculation
+- cleaning/result calculation
 - reward progression
 - reveal animation
 - idle reward claims
@@ -180,4 +180,3 @@ Future React/Vite implementation can model the layout using shared shell compone
 - let systems pause from `isAdShowing`
 
 Canvas rendering, if introduced later, should also respect the computed `GameplayArea` rather than drawing to the full viewport.
-

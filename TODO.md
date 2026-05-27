@@ -4,6 +4,7 @@
 
 - Keep `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png` in sync whenever the design direction changes.
 - Review `docs/mvp_scope.md`.
+- Review `docs/puzzle_design.md`.
 - Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
@@ -34,6 +35,7 @@
 ## MVP Stabilization Tasks
 
 - Review and approve `docs/mvp_scope.md`.
+- Review and approve `docs/puzzle_design.md`.
 - Review and approve `docs/reward_table.md`.
 - Review and approve `docs/data_schema.md`.
 - Tune the MVP result reward table after playtesting.
@@ -41,6 +43,9 @@
 - Define the minimum CatGenerator structure for seed-based generated cats.
 - Define Home growth linkage rules.
 - Map exploration -> reward -> Home progression for cat and non-cat outcomes.
+- Define the MVP puzzle mission table from `docs/puzzle_design.md`.
+- Define ZABAA tuning values beyond the confirmed 3 uses per puzzle if needed.
+- Define dirt/refill flow rules without making movement feel arcade-fast.
 - Decide duplicate recipe material conversion values.
 - Decide adoption stay duration and grace period values.
 - Decide the minimum Tier 2 connections for Album/CatDex and OnsenEdit/Inventory.
@@ -90,6 +95,8 @@
 
 - How are cats discovered in the puzzle/search screen?
 - What does washing input feel like: tap, drag, bubble matching, or timed cleanse?
+- Which cleaning missions are required for the first MVP puzzle slice?
+- How should rocks split flow without making the board feel mechanical?
 - What exact event or roll determines `catFound` at ResultScreen?
 - What exact materials should duplicate recipes convert into?
 - What stay duration and grace period should adoption use for MVP?

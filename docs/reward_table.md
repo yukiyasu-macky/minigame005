@@ -212,14 +212,13 @@ Pipeline:
 
 ```text
 PuzzleEnd
+  -> ZABAA / bath water flow
   -> Result preparation / steam animation
   -> RewardRoll
   -> SavePatch
   -> Result presentation
-  -> if Tier3 cat: CatEncounterCutIn
-  -> RevealScreen
-  -> CatDetailScreen
-  -> HomeScreen
+  -> if Tier3 cat: CatEncounterCutIn -> RevealScreen -> CatDetailScreen -> HomeScreen
+  -> if Tier1/Tier2: HomeScreen
 ```
 
 Tier 3 cat encounter presentation:
@@ -286,4 +285,3 @@ Suggested future config names:
 - `homeGrowthConfig`
 
 These configs should live outside rendering components and should be consumed by systems/game logic.
-
