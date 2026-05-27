@@ -93,13 +93,9 @@ Possible result rewards:
 - cat discovery
 - furniture materials
 - onsen materials
-- bubble materials
-- photos
-- letters
+- bubble-related support rewards
 - recipes
 - event materials
-- koban/currency
-- empty or light outcomes
 
 Non-cat rewards must connect back into:
 
@@ -108,6 +104,14 @@ Non-cat rewards must connect back into:
 - collection progression
 - future unlocks
 - event progression
+
+Confirmed exclusions:
+
+- Photos and letters are Album/memory rewards after adoption/send-off, not normal ResultScreen exploration loot.
+- Generic koban/currency is excluded from the MVP reward table until it has a clear use case.
+- There should be no total "nothing" result. Lightweight outcomes are allowed only if they still provide useful growth or unlock progress.
+
+Initial reward rates, duplicate recipe behavior, cat duplicate behavior, stamina values, adoption circulation, and Result presentation rules are defined in `docs/reward_table.md`.
 
 ## Home Growth Requirement
 
@@ -174,8 +178,8 @@ The MVP should prove the vertical slice without forcing production-scale systems
 Before implementation begins, stabilize:
 
 1. MVP scope docs
-2. Result reward table
-3. SaveData minimum structure
+2. Result reward table in `docs/reward_table.md`
+3. SaveData minimum structure in `docs/data_schema.md`
 4. CatGenerator minimum structure
 5. Home growth linkage rules
 6. exploration -> reward -> Home progression mapping
@@ -191,4 +195,3 @@ These are planning gates, not runtime tasks.
 - exact minimum SaveData schema
 - exact CatGenerator seed fields
 - exact UI dimensions for ad-safe layout
-
