@@ -5,6 +5,7 @@
 - Keep `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png` in sync whenever the design direction changes.
 - Review `docs/mvp_scope.md`.
 - Review `docs/puzzle_design.md`.
+- Review `docs/home_growth.md`.
 - Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
@@ -36,6 +37,7 @@
 
 - Review and approve `docs/mvp_scope.md`.
 - Review and approve `docs/puzzle_design.md`.
+- Review and approve `docs/home_growth.md`.
 - Review and approve `docs/reward_table.md`.
 - Review and approve `docs/data_schema.md`.
 - Tune the MVP result reward table after playtesting.
@@ -43,6 +45,9 @@
 - Define the minimum CatGenerator structure for seed-based generated cats.
 - Define Home growth linkage rules.
 - Map exploration -> reward -> Home progression for cat and non-cat outcomes.
+- Define the first MVP furniture interaction points from `docs/home_growth.md`.
+- Define the first MVP atmosphere upgrades from `docs/home_growth.md`.
+- Define which cat behaviors are required for cushion, wooden bucket, and lantern.
 - Define the MVP puzzle mission table from `docs/puzzle_design.md`.
 - Define ZABAA tuning values beyond the confirmed 3 uses per puzzle if needed.
 - Define dirt/refill flow rules without making movement feel arcade-fast.
@@ -104,3 +109,4 @@
 - What does "send off" mean mechanically and emotionally?
 - How many cats should appear in the bathhouse at once?
 - What progression should exist without adding pressure or battle-like goals?
+- How should Home show growth without becoming a management dashboard?
