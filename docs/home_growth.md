@@ -233,6 +233,8 @@ Home is an observation space, not a management dashboard.
 
 The player should not need to optimize Home to enjoy it. They should want to look at it.
 
+After Result, Home should remain calm. Non-cat rewards should usually appear as quiet state updates or small attention badges. Cat rewards are the only reward type that may receive special flow treatment through CatEncounter, Reveal, and CatDetail. See `docs/result_reward_mapping.md`.
+
 ## Home Change Types
 
 Home changes should be small, readable, and emotionally legible.
@@ -347,4 +349,3 @@ Home growth systems should not own rendering details. Rendering should display r
 - Should atmosphere upgrades be crafted, unlocked, or auto-applied?
 - How should recipe progress be previewed without becoming a management dashboard?
 - Which seasonal theme should be first after cherry blossom?
-

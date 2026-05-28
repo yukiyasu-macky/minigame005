@@ -47,6 +47,7 @@ Planning assumption for future implementation:
 - `docs/game_loop.md` is the planning baseline for the Home-centered exploration, puzzle, result, reveal, and reward loop.
 - `docs/puzzle_design.md` is the final direction for Puzzle gameplay feel, onsen-cleaning presentation, ZABAA, dirt/rock rules, and non-arcade UI/audio/animation tone.
 - `docs/reward_table.md` is the planning baseline for MVP reward tiers, stamina, adoption circulation, Result presentation, and config-driven tuning values.
+- `docs/result_reward_mapping.md` is the planning baseline for one Puzzle play mapping to one pre-decided RunReward, idempotent SavePatch, Tier-based Result presentation, and quiet Home reflection.
 - `docs/home_growth.md` is the planning baseline for how Puzzle rewards create Home atmosphere, cat interaction points, recipes, and emotional observation value.
 - `docs/data_schema.md` is the planning baseline for minimum SaveData structure, operation-confirmed patches, and future localStorage/Firebase compatibility.
 - `HomeScreen` is the main hub.
