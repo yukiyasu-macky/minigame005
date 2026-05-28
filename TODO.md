@@ -8,6 +8,7 @@
 - Review `docs/home_growth.md`.
 - Review `docs/result_reward_mapping.md`.
 - Review `docs/cat_generator.md`.
+- Review `docs/save_patch_flow.md`.
 - Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
@@ -44,6 +45,7 @@
 - Review and approve `docs/result_reward_mapping.md`.
 - Review and approve `docs/data_schema.md`.
 - Review and approve `docs/cat_generator.md`.
+- Review and approve `docs/save_patch_flow.md`.
 - Tune the MVP result reward table after playtesting.
 - Validate the minimum SaveData structure for localStorage first and Firebase migration later.
 - Validate the minimum CatGenerator structure for seed-based generated cats in `docs/cat_generator.md`.
@@ -52,6 +54,7 @@
 - Define Home growth linkage rules.
 - Map exploration -> reward -> Home progression for cat and non-cat outcomes.
 - Define RunReward idempotency and runId lifecycle details from `docs/result_reward_mapping.md`.
+- Define RunSession retention and recovery rules from `docs/save_patch_flow.md`.
 - Decide where optional ad interruption can happen before Result presentation.
 - Define the first MVP furniture interaction points from `docs/home_growth.md`.
 - Define the first MVP atmosphere upgrades from `docs/home_growth.md`.
@@ -98,6 +101,7 @@
 - Produce a first approved asset batch after review.
 - Create static sprite composition test after React/Vite is allowed.
 - Create a future CatGenerator fixture test after implementation begins to verify stable ids, no path persistence, and CatDex species updates.
+- Create a future SavePatch recovery fixture after implementation begins to verify no duplicate rewards and no skipped Result presentation.
 - Prototype static screen compositions before runtime logic.
 - Add a future shared layout shell for `SafeArea`, `ReservedAdArea`, and `GameplayArea` after React/Vite is allowed.
 - Add React/Vite only after the planning gate is approved.
@@ -112,6 +116,7 @@
 - Which cleaning missions are required for the first MVP puzzle slice?
 - How should rocks split flow without making the board feel mechanical?
 - What exact event or roll determines `catFound` at ResultScreen?
+- How long should completed RunSession records remain after Home reflection?
 - Which first species masters are required for MVP cat discovery?
 - Which personality and quirk labels are required for the first MVP cats?
 - What exact materials should duplicate recipes convert into?

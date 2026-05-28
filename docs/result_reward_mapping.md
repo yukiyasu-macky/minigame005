@@ -291,6 +291,8 @@ Do not save:
 
 `SavePatch` should be applied before Result presentation and before any optional ad interruption.
 
+Detailed recovery, idempotency, and ad-interruption rules are defined in `docs/save_patch_flow.md`.
+
 Reason:
 
 - prevents reward loss on reload

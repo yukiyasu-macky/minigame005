@@ -13,6 +13,7 @@ Confirmed:
 - Generated cats should be saved by stable ids and seeds.
 - Result rewards should be saved through small operation-confirmed patches.
 - Result reward mapping should use `runId` idempotency. See `docs/result_reward_mapping.md`.
+- Run session recovery should handle saved-but-unseen Result presentations. See `docs/save_patch_flow.md`.
 - UI/ad state should support pause and resume around popup/interstitial ads.
 
 Tentative:
@@ -36,6 +37,7 @@ Minimum root shape:
   "inventory": {},
   "album": {},
   "missions": {},
+  "runSessions": {},
   "stamina": {},
   "settings": {},
   "adState": {},
@@ -52,6 +54,7 @@ Required sections:
 - `inventory`
 - `album`
 - `missions`
+- `runSessions`
 - `stamina`
 - `settings`
 - `adState`
@@ -157,6 +160,33 @@ Planning notes:
 - Photos and letters are memory rewards after adoption/send-off, not normal exploration loot.
 - `CatDexScreen` belongs under Album but focuses on species and discovery records.
 
+## RunSessionData
+
+Minimum run recovery fields:
+
+```json
+{
+  "activeRunSession": {
+    "runId": "run_id",
+    "rewardTier": "tier1",
+    "rewardType": "furniture_material",
+    "runState": "saveApplied",
+    "savePatchApplied": true,
+    "resultPresentationSeen": false,
+    "homeReflectionSeen": false
+  },
+  "appliedRunIds": []
+}
+```
+
+Planning notes:
+
+- `RunSessionData` exists to recover safely from reload, LIFF suspend, or ad interruption.
+- `appliedRunIds` prevents duplicate reward grants by `runId`.
+- If `savePatchApplied` is true and `resultPresentationSeen` is false, future runtime should restore/show Result presentation again.
+- If `resultPresentationSeen` is true and `homeReflectionSeen` is false, future runtime should resume to Home reflection without applying SavePatch again.
+- Run session flow is defined in `docs/save_patch_flow.md`.
+
 ## StaminaData
 
 Minimum stamina fields:
@@ -223,6 +253,8 @@ Future implementation should save small patches for meaningful operations:
 Result reward patches should be applied before or during Result presentation so LIFF reloads, app closes, or ad interruption do not lose rewards.
 
 `SavePatch` should include `runId`, `rewardTier`, and `rewardType` when applying Puzzle results. It should not include Result text, animation data, render cache, or temporary UI state.
+
+Save patch application and recovery behavior are defined in `docs/save_patch_flow.md`.
 
 ## Config-Driven Systems
 

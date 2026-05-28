@@ -48,6 +48,7 @@ Planning assumption for future implementation:
 - `docs/puzzle_design.md` is the final direction for Puzzle gameplay feel, onsen-cleaning presentation, ZABAA, dirt/rock rules, and non-arcade UI/audio/animation tone.
 - `docs/reward_table.md` is the planning baseline for MVP reward tiers, stamina, adoption circulation, Result presentation, and config-driven tuning values.
 - `docs/result_reward_mapping.md` is the planning baseline for one Puzzle play mapping to one pre-decided RunReward, idempotent SavePatch, Tier-based Result presentation, and quiet Home reflection.
+- `docs/save_patch_flow.md` is the planning baseline for RunSession recovery, idempotent SavePatch application, ad-safe reload handling, ResultPresentation recovery, and HomeReflection repeat prevention.
 - `docs/home_growth.md` is the planning baseline for how Puzzle rewards create Home atmosphere, cat interaction points, recipes, and emotional observation value.
 - `docs/cat_generator.md` is the planning baseline for CatGenerator responsibility, SpeciesMaster/CatInstance separation, stable cat ids, sprite layer ids, animation set ids, CatDex integration, and Home instance behavior inputs.
 - `docs/data_schema.md` is the planning baseline for minimum SaveData structure, operation-confirmed patches, and future localStorage/Firebase compatibility.
@@ -123,7 +124,7 @@ Example:
 ## Implementation Phases
 
 1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
-2. MVP stabilization: review `docs/mvp_scope.md`, `docs/reward_table.md`, `docs/data_schema.md`, `docs/cat_generator.md`, Home growth linkage rules, and exploration -> reward -> Home progression mapping.
+2. MVP stabilization: review `docs/mvp_scope.md`, `docs/reward_table.md`, `docs/data_schema.md`, `docs/cat_generator.md`, `docs/save_patch_flow.md`, Home growth linkage rules, and exploration -> reward -> Home progression mapping.
 3. Asset exploration: produce first visual test batch only after review.
 4. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 5. Static mock composition: create non-interactive mock screens after core assets are approved.
@@ -145,6 +146,7 @@ Example:
 - Future storage schema should not bake in temporary asset filenames.
 - Reward, stamina, adoption, and result presentation values must remain config-driven rather than hardcoded.
 - CatGenerator must stay separate from rendering, Home runtime behavior state, image generation, and animation caches.
+- SavePatch recovery must handle the case where a reward is already saved but ResultPresentation has not yet been seen.
 - Puzzle implementation must preserve the onsen-cleaning mood and must not drift into generic arcade bubble shooter presentation.
 - Home growth must preserve the relaxing observation-space mood and must not drift into facility management, resource factory, or optimization gameplay.
 
