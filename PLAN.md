@@ -51,6 +51,7 @@ Planning assumption for future implementation:
 - `docs/save_patch_flow.md` is the planning baseline for RunSession recovery, idempotent SavePatch application, ad-safe reload handling, ResultPresentation recovery, and HomeReflection repeat prevention.
 - `docs/home_growth.md` is the planning baseline for how Puzzle rewards create Home atmosphere, cat interaction points, recipes, and emotional observation value.
 - `docs/cat_generator.md` is the planning baseline for CatGenerator responsibility, SpeciesMaster/CatInstance separation, stable cat ids, sprite layer ids, animation set ids, CatDex integration, and Home instance behavior inputs.
+- `docs/asset_pipeline_plan.md` is the planning baseline for production master resolution, runtime target resolution, atlas domains, animation naming, frame limits, mobile-safe texture policy, and watercolor asset preservation.
 - `docs/data_schema.md` is the planning baseline for minimum SaveData structure, operation-confirmed patches, and future localStorage/Firebase compatibility.
 - `HomeScreen` is the main hub.
 - `HomeScreen -> PuzzleScreen -> ResultScreen` is the core play path.
@@ -125,7 +126,7 @@ Example:
 
 1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
 2. MVP stabilization: review `docs/mvp_scope.md`, `docs/reward_table.md`, `docs/data_schema.md`, `docs/cat_generator.md`, `docs/save_patch_flow.md`, Home growth linkage rules, and exploration -> reward -> Home progression mapping.
-3. Asset exploration: produce first visual test batch only after review.
+3. Asset exploration: review `docs/asset_pipeline_plan.md`, then produce first visual test batch only after review.
 4. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 5. Static mock composition: create non-interactive mock screens after core assets are approved.
 6. Runtime setup: add React/Vite only after planning and MVP stabilization gates are complete.
@@ -142,6 +143,7 @@ Example:
 - Mobile safe areas, bottom navigation, and LIFF browser chrome need early layout tests.
 - Persistent top header, bottom banner ads, and popup/interstitial ad pauses need early layout and state tests.
 - Watercolor softness can become inconsistent if generated assets are produced in separate batches without strong prompt discipline.
+- Runtime scaling mismatch can blur cats or break layer alignment if production masters and runtime derivatives are not standardized.
 - Backgrounds and UI panels must stay readable under steam/fog effects.
 - Future storage schema should not bake in temporary asset filenames.
 - Reward, stamina, adoption, and result presentation values must remain config-driven rather than hardcoded.
