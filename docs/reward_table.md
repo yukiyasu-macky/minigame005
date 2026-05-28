@@ -35,6 +35,7 @@ Purpose:
 - daily Home growth
 - normal progression
 - regular useful result when no cat is found
+- progress toward Home atmosphere and cat interaction points
 
 Rewards:
 
@@ -49,6 +50,7 @@ Purpose:
 - future expectation
 - content unlock
 - event or crafting motivation
+- permission to create new Home interactions or atmosphere changes
 
 Rewards:
 
@@ -285,3 +287,5 @@ Suggested future config names:
 - `homeGrowthConfig`
 
 These configs should live outside rendering components and should be consumed by systems/game logic.
+
+Home growth meaning and reward-to-Home mapping are defined in `docs/home_growth.md`.

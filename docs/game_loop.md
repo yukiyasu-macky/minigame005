@@ -8,6 +8,7 @@ Confirmed:
 
 - MVP scope is defined in `docs/mvp_scope.md`.
 - Puzzle feel and rules are defined in `docs/puzzle_design.md`.
+- Home growth direction is defined in `docs/home_growth.md`.
 - MVP reward/stamina/adoption/result presentation rules are defined in `docs/reward_table.md`.
 - SaveData planning is defined in `docs/data_schema.md`.
 - The game is Home-centered.
@@ -191,7 +192,9 @@ Rare cats may use longer stay duration or special rules later.
 
 Rewards should connect to one or more Home systems:
 
-- onsen expansion
+- cat interaction points
+- atmosphere changes
+- onsen scenery changes
 - furniture unlocks
 - furniture upgrades
 - seasonal decoration
@@ -209,6 +212,8 @@ Expected to evolve:
 MVP requirement:
 
 Returning to Home should show visible change or state progression. If no cat is found, the player should still see a resource, collection, event, or growth connection that makes another exploration feel worthwhile.
+
+Home growth should feel like cats becoming more comfortable in the hot spring space, not like facility management or optimization.
 
 ## Album And CatDex Relationship
 
