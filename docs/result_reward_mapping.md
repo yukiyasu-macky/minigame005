@@ -256,6 +256,7 @@ During CatEncounter cue:
 Before `CatResult` display:
 
 - `SavePatch` should include the finalized cat instance data required for persistence
+- Cat generation structure is defined in `docs/cat_generator.md`.
 
 Save only stable data:
 
@@ -265,9 +266,14 @@ catInstance {
   speciesId
   rarity
   seed
-  nameId or generatedName
+  personality
+  quirks
+  favoriteTheme
+  spriteLayerIds
+  animationSetIds
   discoveredAt
   sourceRunId
+  lifecycleState
 }
 ```
 
@@ -568,4 +574,3 @@ Keep this separation:
 Result = discovery
 Home = calm observation
 ```
-
