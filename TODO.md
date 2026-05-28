@@ -19,8 +19,11 @@
 ## Missing Asset Decisions
 
 - Review `docs/sprite_spec.md`.
+- Review `docs/asset_pipeline_plan.md`.
 - Define exact sprite canvas sizes and anchor points for all cat layers.
 - Decide whether accessories should be 512x512 or 768x768.
+- Decide first runtime target size for live Home cats: `384x384` or `512x512`.
+- Decide atlas domain naming and packing tool after runtime setup is approved.
 - Decide whether color variants are separate PNGs or tintable layers.
 - Decide how many initial cat body, pattern, eye, mouth, tail, dirt, and accessory variants are needed for the first playable prototype.
 - Confirm whether rare/fantasy cats need glow layers as separate effects or baked into body art.
@@ -34,6 +37,8 @@
 - Future state needs `isAdShowing`, `reservedAdHeight`, and `safeAreaInsets` without coupling gameplay systems to UI components.
 - MVP implementation can drift if puzzle, reward, rendering, save data, and ad state are not kept separated.
 - Generated PNG dimensions may become too large for mobile if watercolor backgrounds are exported without compression planning.
+- Full-frame animation on every cat layer can create too much atlas memory, draw cost, and visual drift.
+- Runtime scaling mismatch can damage watercolor softness and cat layer alignment.
 - A future manifest loader needs validation so missing assets fail clearly.
 
 ## MVP Stabilization Tasks
@@ -97,6 +102,7 @@
 - Create first screen flow/state diagram from `docs/screen_flow.md` and `docs/game_loop.md`.
 - Do not start React/Vite or gameplay runtime until MVP stabilization tasks are reviewed.
 - Produce first sprite test batch.
+- Produce first asset pipeline test batch from `docs/asset_pipeline_plan.md` after review.
 - Add anchor metadata to `assets/asset_manifest.json` if approved.
 - Produce a first approved asset batch after review.
 - Create static sprite composition test after React/Vite is allowed.
