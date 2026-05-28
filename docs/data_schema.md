@@ -12,6 +12,7 @@ Confirmed:
 - Save data should not store particles, render cache, animation frame state, or every-frame coordinates.
 - Generated cats should be saved by stable ids and seeds.
 - Result rewards should be saved through small operation-confirmed patches.
+- Result reward mapping should use `runId` idempotency. See `docs/result_reward_mapping.md`.
 - UI/ad state should support pause and resume around popup/interstitial ads.
 
 Tentative:
@@ -219,6 +220,8 @@ Future implementation should save small patches for meaningful operations:
 
 Result reward patches should be applied before or during Result presentation so LIFF reloads, app closes, or ad interruption do not lose rewards.
 
+`SavePatch` should include `runId`, `rewardTier`, and `rewardType` when applying Puzzle results. It should not include Result text, animation data, render cache, or temporary UI state.
+
 ## Config-Driven Systems
 
 Future implementation should use config files/tables instead of hardcoded magic numbers:
@@ -231,4 +234,3 @@ Future implementation should use config files/tables instead of hardcoded magic 
 - `homeGrowthConfig`
 
 Systems/game logic should consume config values. Rendering/components should display resolved state and should not own reward, stamina, adoption, or save rules.
-

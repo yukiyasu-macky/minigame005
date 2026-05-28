@@ -6,6 +6,7 @@
 - Review `docs/mvp_scope.md`.
 - Review `docs/puzzle_design.md`.
 - Review `docs/home_growth.md`.
+- Review `docs/result_reward_mapping.md`.
 - Review `docs/screen_flow.md`, `docs/game_loop.md`, and `docs/ui_safe_area_spec.md`.
 - Confirm final logo treatment, including whether the steam/paw motif is part of the production logo.
 - Confirm final UI font choices for Japanese and Latin text.
@@ -39,12 +40,15 @@
 - Review and approve `docs/puzzle_design.md`.
 - Review and approve `docs/home_growth.md`.
 - Review and approve `docs/reward_table.md`.
+- Review and approve `docs/result_reward_mapping.md`.
 - Review and approve `docs/data_schema.md`.
 - Tune the MVP result reward table after playtesting.
 - Validate the minimum SaveData structure for localStorage first and Firebase migration later.
 - Define the minimum CatGenerator structure for seed-based generated cats.
 - Define Home growth linkage rules.
 - Map exploration -> reward -> Home progression for cat and non-cat outcomes.
+- Define RunReward idempotency and runId lifecycle details from `docs/result_reward_mapping.md`.
+- Decide where optional ad interruption can happen before Result presentation.
 - Define the first MVP furniture interaction points from `docs/home_growth.md`.
 - Define the first MVP atmosphere upgrades from `docs/home_growth.md`.
 - Define which cat behaviors are required for cushion, wooden bucket, and lantern.

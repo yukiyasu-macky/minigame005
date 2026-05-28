@@ -9,6 +9,7 @@ These values are operating values for planning and tuning. Future implementation
 Confirmed:
 
 - `ResultScreen` rewards are tier-based.
+- One Puzzle play maps to one pre-decided `RunReward`, one primary reward, one idempotent `SavePatch`, and one Tier-based Result presentation. See `docs/result_reward_mapping.md`.
 - `ResultScreen` should not always produce a cat.
 - There should be no total "nothing" result.
 - If no cat is found, the player still receives useful growth or unlock progress.
@@ -213,11 +214,14 @@ Future config name: `resultPresentationConfig`
 Pipeline:
 
 ```text
-PuzzleEnd
+PuzzleStart
+  -> create runId
+  -> determine RunReward
+  -> PuzzlePlay
+  -> PuzzleClear
   -> ZABAA / bath water flow
-  -> Result preparation / steam animation
-  -> RewardRoll
   -> SavePatch
+  -> optional ad interruption
   -> Result presentation
   -> if Tier3 cat: CatEncounterCutIn -> RevealScreen -> CatDetailScreen -> HomeScreen
   -> if Tier1/Tier2: HomeScreen
@@ -254,6 +258,7 @@ Use operation-confirmed updates.
 Important:
 
 - Result reward should be determined and saved before or during Result presentation, not only after the player leaves `ResultScreen`.
+- The one primary reward should be determined at `PuzzleStart` as `RunReward`, then applied as an idempotent `SavePatch` after successful clear.
 - `ResultScreen` is presentation, not the only owner of rewards.
 - Avoid losing rewards if the app closes, LIFF reloads, or an ad interrupts.
 

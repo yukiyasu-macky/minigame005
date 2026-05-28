@@ -10,6 +10,7 @@ Confirmed:
 - Puzzle feel and rules are defined in `docs/puzzle_design.md`.
 - Home growth direction is defined in `docs/home_growth.md`.
 - MVP reward/stamina/adoption/result presentation rules are defined in `docs/reward_table.md`.
+- Result reward/save/Home mapping is defined in `docs/result_reward_mapping.md`.
 - SaveData planning is defined in `docs/data_schema.md`.
 - The game is Home-centered.
 - Exploration enters from Home and resolves through Puzzle and Result.
@@ -83,6 +84,8 @@ Confirmed constraints:
 ## Puzzle Resolution
 
 `PuzzleScreen` resolves into `ResultScreen`.
+
+Each Puzzle play uses one pre-decided `RunReward`, created at `PuzzleStart`. If the run is cleared successfully, an idempotent `SavePatch` is applied before Tier-based Result presentation. If the run is abandoned before the reward condition, the reward is not granted.
 
 Result data may include:
 
