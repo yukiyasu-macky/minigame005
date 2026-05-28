@@ -63,28 +63,30 @@ Minimum cat instance fields:
 
 ```json
 {
-  "instanceId": "cat_instance_id",
+  "catInstanceId": "cat_instance_id",
   "speciesId": "cat_species_id",
   "seed": "seed_value",
   "rarity": "normal",
   "personality": "gentle",
   "quirks": [],
   "favoriteTheme": "default_onsen",
+  "spriteLayerIds": {},
+  "animationSetIds": {},
   "discoveredAt": "timestamp",
-  "adopted": false,
-  "adoptedAt": null,
-  "bondLevel": 0,
-  "currentState": "staying"
+  "sourceRunId": "run_id",
+  "lifecycleState": "staying"
 }
 ```
 
 Planning notes:
 
-- `instanceId` identifies this individual cat.
+- `catInstanceId` identifies this individual cat.
 - `speciesId` supports CatDex species/record tracking.
-- `seed` supports seed-based individuality and visual/personality generation.
-- `currentState` may include values such as `staying`, `adoption_requested`, `adopted`, or `auto_adopted`.
+- `seed` supports seed-based individuality, sprite id selection, and personality selection.
+- `spriteLayerIds` and `animationSetIds` store stable ids only, never file paths or render caches.
+- `lifecycleState` may include values such as `new`, `staying`, `adoption_requested`, `adopted`, or `auto_adopted`.
 - Cats should basically not duplicate as ResultScreen rewards; prefer undiscovered species when possible.
+- Cat generation structure is defined in `docs/cat_generator.md`.
 
 ## HomeState
 
@@ -105,7 +107,7 @@ Minimum Home state fields:
 
 Planning notes:
 
-- `activeCats` should reference cat `instanceId` values.
+- `activeCats` should reference cat `catInstanceId` values.
 - Home growth should be visible or stateful after Result rewards.
 - Furniture and themes should be driven by stable ids.
 
