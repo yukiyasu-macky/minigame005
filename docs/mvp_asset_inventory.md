@@ -93,7 +93,7 @@ These existing planned manifest assets are directly useful for MVP.
 | `cat_tail_curve_cream` | `cat/tail` | `atlas_cat_common` | first tail layer | `P0` |
 | `cat_accessory_head_towel` | `cat/accessory` | `atlas_cat_common` | towel/accessory slot test | `P0` |
 | `cat_dirt_muddy_overlay` | `cat/dirt` | `atlas_cat_fx` | dirty rescued state / wash reveal | `P0` |
-| `cat_effect_bath_bubbles` | `cat/effect` | `atlas_cat_fx` | bathing/reveal bubble overlay | `P0` |
+| `cat_effect_bath_bubbles` | `cat/effect` | `atlas_cat_fx` | bath / washing / bubble overlay | `P0` |
 | `effect_steam_wisps_soft` | `effects/steam` | `atlas_result_reveal` / `atlas_home_environment` | Home atmosphere and reveal masking | `P0` |
 | `effect_steam_fog_layer` | `effects/steam` | `atlas_result_reveal` | CatEncounter / Result transition mist | `P1` |
 | `effect_sparkles_warm_set` | `effects/sparkles` | `atlas_result_reveal` | gentle reveal / recipe sparkle | `P1` |
@@ -136,6 +136,7 @@ Do not add them blindly. Review names and scope before manifest update.
 | `result_badge_cat_encounter` | image | cat reward | ResultScreen / RevealScreen | `atlas_result_reveal` | `P1` | Keep subtle; no gacha language. |
 | `cat_silhouette_round_soft` | image | cat reveal | RevealScreen | `atlas_result_reveal` | `P0` | Steam silhouette before reveal. |
 | `cat_shadow_reflection_soft` | image | cat encounter | ResultScreen / RevealScreen | `atlas_result_reveal` | `P1` | Water reflection hint. |
+| `cat_effect_steam_overlay_soft` | image | cat atmosphere / reveal masking | HomeScreen / ResultScreen / RevealScreen / CatDetailScreen | `atlas_cat_fx` | `P0` | Dedicated warm steam overlay for air, depth, and masking; separate from bath bubbles. |
 | `ui_icon_album` | image | support nav | HomeScreen / Album placeholder | `atlas_ui_common` | `P1` | Secondary nav. |
 | `ui_icon_craft` | image | support nav | HomeScreen / Craft placeholder | `atlas_ui_common` | `P1` | Secondary nav. |
 | `ui_icon_bag` | image | support nav | HomeScreen / Bag placeholder | `atlas_ui_common` | `P1` | Secondary nav. |
@@ -255,6 +256,7 @@ Result asset rules:
 | `effect_bubbles_large_pop` | gentle bubble reveal | `atlas_result_reveal` | `P1` | in manifest |
 | `effect_sparkles_warm_set` | gentle reveal sparkle | `atlas_result_reveal` | `P1` | in manifest |
 | `cat_effect_reveal_glow` | cat-specific reveal glow | `atlas_cat_fx` | `P1` | in manifest |
+| `cat_effect_steam_overlay_soft` | cat steam/depth overlay | `atlas_cat_fx` | `P0` | proposed |
 | `cat_body_round_cream` | revealed cat body | `atlas_cat_common` | `P0` | in manifest |
 | `cat_pattern_calico_soft` | revealed cat pattern | `atlas_cat_common` | `P0` | in manifest |
 | `cat_eyes_gentle_green` | revealed cat eyes | `atlas_cat_common` | `P0` | in manifest |
@@ -278,7 +280,8 @@ Reveal asset rules:
 | `ui_button_sub_cream` | secondary actions | `atlas_ui_common` | `P1` | in manifest |
 | `ui_icon_cat_face` | cat detail identity icon | `atlas_ui_common` | `P0` | in manifest |
 | first MVP cat layer set | cat visual | `atlas_cat_common` | `P0` | in manifest |
-| `cat_effect_bath_bubbles` | bath state overlay | `atlas_cat_fx` | `P1` | in manifest |
+| `cat_effect_bath_bubbles` | bath/washing bubble overlay | `atlas_cat_fx` | `P1` | in manifest |
+| `cat_effect_steam_overlay_soft` | warm steam / depth overlay | `atlas_cat_fx` | `P0` | proposed |
 
 CatDetail asset rules:
 
@@ -315,7 +318,8 @@ Tier 2 support rule:
 | `cat_mouth_tiny_smile` | mouth layer, if used by renderer | `atlas_cat_common` | `P0` | in manifest |
 | `cat_tail_curve_cream` | `spriteLayerIds.tail` | `atlas_cat_common` | `P0` | in manifest |
 | `cat_accessory_head_towel` | `spriteLayerIds.towel` or accessory slot | `atlas_cat_common` | `P0` | in manifest |
-| `cat_effect_bath_bubbles` | `spriteLayerIds.steamOverlay` / bath overlay candidate | `atlas_cat_fx` | `P0` | in manifest |
+| `cat_effect_steam_overlay_soft` | `spriteLayerIds.steamOverlay` | `atlas_cat_fx` | `P0` | proposed |
+| `cat_effect_bath_bubbles` | bath / washing bubble overlay | `atlas_cat_fx` | `P0` | in manifest |
 | `cat_anim_round_idle_soft` | `animationSetIds.idle` | `atlas_cat_animation_round` | `P0` | proposed |
 | `cat_anim_round_walk_slow` | `animationSetIds.walk` | `atlas_cat_animation_round` | `P0` | proposed |
 | `cat_anim_round_sit_settle` | `animationSetIds.sit` | `atlas_cat_animation_round` | `P1` | proposed |
@@ -327,6 +331,8 @@ Notes:
 
 - `body`, `pattern`, `tail`, and `eyes` are synchronized layers.
 - `towel` and `steamOverlay` are lightweight overlays.
+- `cat_effect_bath_bubbles` is for bath, washing, and bubble feeling.
+- `cat_effect_steam_overlay_soft` is for warm air, depth, CatEncounter, Reveal masking, and soft ambience.
 - Do not animate every layer at high frame count.
 
 ### HomeRuntime
@@ -415,6 +421,7 @@ P0:
 
 - `cat_dirt_muddy_overlay`
 - `cat_effect_bath_bubbles`
+- `cat_effect_steam_overlay_soft`
 
 P1:
 
@@ -507,7 +514,8 @@ P1:
 - one Reveal background
 - one complete round cat static layer set
 - one dirty overlay
-- one bath bubble/steam overlay
+- one bath bubble overlay
+- one dedicated cat steam overlay
 - four essential cat animation ids: idle, walk, sleep, bathe
 - puzzle board surface
 - three dirt pieces: leaf, mud, moss
@@ -559,7 +567,7 @@ Do not store asset file paths in SaveData. Save stores stable ids only.
 ## 12. Open Questions
 
 - Should MVP Puzzle use three dirt types or four?
-- Should `cat_effect_bath_bubbles` serve as `steamOverlay`, or should a dedicated `cat_effect_steam_overlay_soft` be added?
+- Should `cat_effect_steam_overlay_soft` be a full `768x768` cat-canvas overlay, or a smaller reusable overlay with attachment/offset metadata?
 - Should `ui_icon_album`, `ui_icon_craft`, and `ui_icon_bag` be image assets or lucide/DOM icons in MVP?
 - Should TitleScene reuse `bg_home_bathhouse_main` for MVP?
 - Should CatDex thumbnails be live layered cats or precomposed static thumbnails?
