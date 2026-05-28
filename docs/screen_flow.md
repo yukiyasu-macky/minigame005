@@ -103,6 +103,7 @@ Expected to evolve:
 Purpose:
 
 - central game hub
+- relaxing hot spring observation space
 - onsen display
 - cat observation
 - idle reward collection
@@ -125,6 +126,8 @@ Primary transitions:
 Planning note:
 
 Home must make rewards and discoveries feel connected to the onsen, cats, furniture, events, and collections without adding pressure or battle-like goals.
+
+UX and layout rules are defined in `docs/home_layout.md`. The Home scene should remain visually dominant, Explore should be the strongest CTA, Album/CatDex/Craft/Bag should remain secondary, and low-frequency controls should stay near the header. HomeScreen must not become a dense management dashboard or notification-heavy lobby.
 
 ## OnsenEditScreen
 
