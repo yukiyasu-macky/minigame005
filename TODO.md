@@ -21,6 +21,7 @@
 - Review `docs/sprite_spec.md`.
 - Review `docs/asset_pipeline_plan.md`.
 - Review `docs/mvp_asset_inventory.md`.
+- Review `docs/asset_generation_prompt_rules.md`.
 - Define exact sprite canvas sizes and anchor points for all cat layers.
 - Decide whether accessories should be 512x512 or 768x768.
 - Decide first runtime target size for live Home cats: `384x384` or `512x512`.
@@ -105,6 +106,7 @@
 - Produce first sprite test batch.
 - Produce first asset pipeline test batch from `docs/asset_pipeline_plan.md` after review.
 - Approve the `P0` asset cut in `docs/mvp_asset_inventory.md` before adding new manifest entries.
+- Use `docs/asset_generation_prompt_rules.md` before any ChatGPT-generated asset prompt is sent.
 - Add anchor metadata to `assets/asset_manifest.json` if approved.
 - Produce a first approved asset batch after review.
 - Create static sprite composition test after React/Vite is allowed.

@@ -53,6 +53,7 @@ Planning assumption for future implementation:
 - `docs/cat_generator.md` is the planning baseline for CatGenerator responsibility, SpeciesMaster/CatInstance separation, stable cat ids, sprite layer ids, animation set ids, CatDex integration, and Home instance behavior inputs.
 - `docs/asset_pipeline_plan.md` is the planning baseline for production master resolution, runtime target resolution, atlas domains, animation naming, frame limits, mobile-safe texture policy, and watercolor asset preservation.
 - `docs/mvp_asset_inventory.md` is the planning baseline for MVP asset scope by screen, system, atlas domain, and priority.
+- `docs/asset_generation_prompt_rules.md` is the prompt-governance source of truth for future ChatGPT-generated visual assets, preventing visual drift, layer misalignment, and runtime-incompatible exports.
 - `docs/data_schema.md` is the planning baseline for minimum SaveData structure, operation-confirmed patches, and future localStorage/Firebase compatibility.
 - `HomeScreen` is the main hub.
 - `HomeScreen -> PuzzleScreen -> ResultScreen` is the core play path.
@@ -127,7 +128,7 @@ Example:
 
 1. Planning review: validate this plan, the manifest, naming conventions, and source-of-truth gaps.
 2. MVP stabilization: review `docs/mvp_scope.md`, `docs/reward_table.md`, `docs/data_schema.md`, `docs/cat_generator.md`, `docs/save_patch_flow.md`, Home growth linkage rules, and exploration -> reward -> Home progression mapping.
-3. Asset exploration: review `docs/asset_pipeline_plan.md` and `docs/mvp_asset_inventory.md`, then produce first visual test batch only after review.
+3. Asset exploration: review `docs/asset_pipeline_plan.md`, `docs/mvp_asset_inventory.md`, and `docs/asset_generation_prompt_rules.md`, then produce first visual test batch only after review.
 4. Asset approval: compare generated assets against `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`.
 5. Static mock composition: create non-interactive mock screens after core assets are approved.
 6. Runtime setup: add React/Vite only after planning and MVP stabilization gates are complete.
