@@ -35,6 +35,7 @@ Responsibility split:
 | `docs/sprite_spec.md` | cat sprite canvas, anchors, layer order, export rules |
 | `docs/asset_pipeline_plan.md` | production master/runtime target, atlas, animation, mobile policy |
 | `docs/mvp_asset_inventory.md` | MVP asset scope by screen/system/atlas/priority |
+| `docs/p0_production_batch.md` | first production-batch gate and approved minimum generation scope |
 | `docs/cat_generator.md` | stable `spriteLayerIds` / `animationSetIds` usage |
 | `docs/ui_safe_area_spec.md` | ad-safe and mobile screen composition constraints |
 | `docs/asset_generation_prompt_rules.md` | prompt rules to keep generated assets consistent and usable |
@@ -147,7 +148,28 @@ Runtime target planning:
 - `384x384` remains an alternate mobile test target from `docs/asset_pipeline_plan.md`
 - do not request mixed runtime sizes for layers in the same cat composition
 
-## 7. Canvas, Anchor, And Alignment Rules
+## 7. Production Identity And Sprite Safety Rules
+
+Every production prompt must treat the stable asset id as the source of truth.
+
+Rules:
+
+- include exactly one `Asset id` in the prompt
+- generate only the requested asset id
+- do not add missing layers to "complete" the image
+- do not add props, accessories, labels, UI, scenery, or effects unless the asset request explicitly asks for them
+- do not reinterpret the asset as a scene, poster, mood board, or character sheet
+- preserve future layer compositing compatibility over standalone illustration appeal
+- maintain visual scale with the other assets in the same layer family
+- keep the silhouette readable at `128px` display size
+- avoid tiny decorative details that disappear at mobile runtime size
+- avoid ambient shadows outside the intended asset silhouette
+- avoid broad semi-transparent halos that waste atlas space or create packing artifacts
+- keep soft watercolor edges, but do not leave dirty matte pixels, colored fringes, or green-screen remnants
+
+The generated result should be production-safe game art, not concept art.
+
+## 8. Canvas, Anchor, And Alignment Rules
 
 Cat layer prompts must include:
 
@@ -169,7 +191,7 @@ Rules:
 - do not let accessories change the body anchor
 - do not let effects hide the face unless the asset is explicitly for reveal masking
 
-## 8. Cat Layer Rules
+## 9. Cat Layer Rules
 
 Required cat layer slots:
 
@@ -186,6 +208,7 @@ Each layer must:
 
 - occupy the same canvas space
 - remain composable
+- align with the approved base layer set for the current body type
 - avoid baked shadows from other layers
 - avoid baked backgrounds
 - avoid unrelated accessories
@@ -193,6 +216,17 @@ Each layer must:
 - avoid changing body silhouette unless the target layer is body
 - use soft cocoa-brown outlines
 - preserve rounded cute proportions
+
+For the first round-cat production batch, cat-layer assets must align with:
+
+- `cat_body_round_cream`
+- `cat_pattern_calico_soft`
+- `cat_eyes_gentle_green`
+- `cat_mouth_tiny_smile`
+- `cat_tail_curve_cream`
+- `cat_accessory_head_towel`
+
+Do not alter the shared anchor position, resize the body, shift the face, shift the tail base, crop transparent margins, or change the overall cat scale.
 
 Layer-specific prompt rules:
 
@@ -212,7 +246,7 @@ Layer-specific prompt rules:
 - `cat_effect_bath_bubbles`: bath / washing / bubble feeling
 - `cat_effect_steam_overlay_soft`: warm steam / air / depth / CatEncounter / Reveal masking
 
-## 9. One Asset Per Image Rule
+## 10. One Asset Per Image Rule
 
 Generate one final production asset per image unless the request explicitly asks for a review sheet or animation strip.
 
@@ -232,7 +266,7 @@ Allowed exceptions:
 - bubble/sparkle effect sets when the manifest expects a set asset
 - reference/review sheets that are clearly not production exports
 
-## 10. Animation Strip Prompt Rules
+## 11. Animation Strip Prompt Rules
 
 Animation strip generation must follow Game Studio sprite-pipeline principles:
 
@@ -278,7 +312,7 @@ Lightweight overlays:
 
 Steam should be low-frequency, low opacity, and soft. It may use few frames or procedural drift later.
 
-## 11. UI Asset Prompt Rules
+## 12. UI Asset Prompt Rules
 
 UI asset prompts must follow the design sheet:
 
@@ -300,7 +334,7 @@ UI generation rules:
 
 Buttons, panels, and icons may be used by DOM UI later, so generated parts should not assume fixed screen text or route state.
 
-## 12. Background Prompt Rules
+## 13. Background Prompt Rules
 
 Backgrounds should be warm, readable, and not overbusy.
 
@@ -316,7 +350,7 @@ Rules:
 
 Home background should start mostly static. Puzzle background should feel like a hot spring surface area, not an arcade grid. Reveal background should support silhouette and steam masking.
 
-## 13. Effect Prompt Rules
+## 14. Effect Prompt Rules
 
 Effects should be soft, reusable, and low-cost.
 
@@ -345,19 +379,22 @@ Rules:
 
 Steam and bubbles are different responsibilities. Do not use bubble prompts to produce steam overlays.
 
-## 14. Atlas And Manifest Safety Rules
+## 15. Atlas And Manifest Safety Rules
 
 Generation prompts must support future manifest and atlas registration.
 
 Rules:
 
 - use lowercase snake_case proposed ids
+- treat `Asset id` as the stable manifest key for the generated asset
 - one production asset should map cleanly to one manifest id unless it is a set/strip
 - do not include temporary names in visual output
 - do not create assets that require hidden file-path assumptions
 - avoid giant transparent canvases beyond the planned master size
 - avoid unnecessary detail that will not read at runtime target size
 - avoid wide alpha halos that waste atlas space
+- avoid semi-transparent edge noise that can create visible seams after atlas packing
+- do not rely on runtime trimming unless source-size, pivot, and offset metadata are preserved
 
 Atlas domains should follow:
 
@@ -369,7 +406,7 @@ Atlas domains should follow:
 - `atlas_result_reveal`
 - `atlas_ui_common`
 
-## 15. Runtime And Save Safety Rules
+## 16. Runtime And Save Safety Rules
 
 Generated assets must remain compatible with:
 
@@ -396,7 +433,7 @@ Avoid assets that require:
 - heavy transparency over the whole viewport
 - large always-loaded texture sets
 
-## 16. Safe-Area And Screen Composition Rules
+## 17. Safe-Area And Screen Composition Rules
 
 Generated screen mockups or backgrounds must respect:
 
@@ -416,7 +453,27 @@ Rules:
 
 For pure sprite assets, do not bake screen layout assumptions into the image.
 
-## 17. Prompt Template
+## 18. Recommended Production Order
+
+Future production should validate composition in small steps instead of generating large asset sets immediately.
+
+Recommended order for the first cat-oriented batch:
+
+1. Review `docs/asset_generation_prompt_rules.md`.
+2. Review `docs/p0_production_batch.md`.
+3. Generate the base body asset first.
+4. Validate body canvas, anchor, silhouette, and `128px` readability.
+5. Generate the pattern layer.
+6. Validate composition with the approved body.
+7. Generate eyes, mouth, tail, accessory, towel, dirt, bath bubbles, and steam overlay in small groups.
+8. Validate every layer against the approved body composition.
+9. Generate minimal animation seed frames only after the static composition is approved.
+10. Generate full animation strips from approved seed frames, not isolated frames.
+11. Only then expand production beyond the P0 batch.
+
+Do not generate a large cat library before the first body, pattern, face, tail, accessory, dirt, and steam layers compose correctly.
+
+## 19. Prompt Template
 
 Use this structure for future asset prompts:
 
@@ -429,6 +486,8 @@ Intended atlas domain: [atlas domain]
 Production master: [size]
 Transparency: [transparent PNG / background]
 Composition: [canvas, anchor, alignment]
+Layer compatibility: [base layer set or "not applicable"]
+Runtime readability target: readable at 128px
 
 Style:
 warm watercolor storybook, Japanese soft onsen atmosphere, cocoa-brown pencil-like outlines, soft cream/pastel palette, rounded cute silhouettes, gentle lighting, low contrast, handmade paper texture.
@@ -437,14 +496,15 @@ Asset-specific requirements:
 [layer rules, pose, emotion, screen use, attachment point, frame count]
 
 Forbidden:
-no neon, no cyberpunk, no metallic UI, no glossy mobile game monetization look, no hard shadows, no realistic rendering, no western comic style, no aggressive effects, no PvP, no battle aesthetics, no high-saturation anime UI, no gacha SSR effects, no text labels, no green background.
+no neon, no cyberpunk, no metallic UI, no glossy mobile game monetization look, no hard shadows, no realistic rendering, no western comic style, no aggressive effects, no PvP, no battle aesthetics, no high-saturation anime UI, no gacha SSR effects, no text labels, no green background, no extra layers, no extra props, no ambient shadow outside the requested asset.
 ```
 
-## 18. Review Checklist
+## 20. Review Checklist
 
 Before accepting a generated asset:
 
 - Does it match `docs/design_sheet.md` and `assets/reference/awaneko_design_sheet.png`?
+- Does it match the requested `Asset id` and only that asset?
 - Does it follow the correct category rules?
 - Is the style warm watercolor storybook?
 - Does it avoid forbidden visual directions?
@@ -452,15 +512,19 @@ Before accepting a generated asset:
 - Is transparency correct?
 - Is there any green/matte background accidentally baked in?
 - Does it preserve anchor and alignment?
+- Does it align with the approved base layer set when it is a cat layer?
+- Does it keep the silhouette readable at `128px` display size?
 - Is it one asset, not a mixed sheet, unless intentionally a strip/set?
 - Does it avoid baked UI/text/background where forbidden?
 - Does it remain readable at runtime target size?
 - Does it avoid oversized alpha halos?
+- Does it avoid edge noise, colored matte pixels, or semi-transparent artifacts that would hurt atlas packing?
+- Does it avoid ambient shadows outside the intended silhouette?
 - Does it avoid unnecessary animation complexity?
 - Does it map cleanly to a stable manifest id?
 - Can it be used without saving file paths or runtime cache?
 
-## 19. Missing Rules Identified During Review
+## 21. Missing Rules Identified During Review
 
 The proposed rules were good, but the review found additional rules that should be official:
 
@@ -472,11 +536,15 @@ The proposed rules were good, but the review found additional rules that should 
 - distinguish bath bubbles from steam overlays
 - require prompt-level manifest id, category, and atlas domain context
 - require review against runtime target readability
+- require `128px` readability checks for small mobile presentation
 - prohibit oversized alpha halos that waste atlas space
+- prohibit extra props, extra layers, and ambient shadows outside the requested asset
+- require layer compatibility checks against the approved base round-cat set
+- require small-step production order before large asset generation
 - include safe-area rules for screen mockups/backgrounds
 - state that prompts must not imply save data should store paths/cache
 
-## 20. Risks If This Document Is Not Used
+## 22. Risks If This Document Is Not Used
 
 Visual risks:
 
@@ -489,7 +557,9 @@ Layering risks:
 
 - different cat layers use different canvas sizes
 - body/pattern/eyes/tail no longer align
+- face position drifts between eyes, mouth, pattern, and body
 - accessories cover eyes
+- extra props are accidentally baked into core cat layers
 - dirt or steam hides the face unintentionally
 - shadows are baked into the wrong layer
 
@@ -497,6 +567,7 @@ Pipeline risks:
 
 - generated assets do not map cleanly to manifest ids
 - atlas space is wasted by huge transparent halos
+- semi-transparent edge artifacts create atlas seams or dirty matte pixels
 - animation frame counts grow too high
 - frame-by-frame generation causes identity drift
 - runtime target scaling makes assets blurry
@@ -505,10 +576,11 @@ Runtime risks:
 
 - too many large transparent textures are loaded
 - too many layers animate independently
+- tiny details disappear at `128px` and make assets feel inconsistent
 - mobile webview memory becomes unstable
 - reload recovery depends on runtime-only cache
 
-## 21. Non-Goals
+## 23. Non-Goals
 
 This document does not:
 
